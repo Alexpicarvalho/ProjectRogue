@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DamageTest
   m_EditorClassIdentifier: 
   amount: 30
-  addForce: 60
+  addForce: 10
   element: 0
   tickAmount: 1
   damageOTDuration: 1

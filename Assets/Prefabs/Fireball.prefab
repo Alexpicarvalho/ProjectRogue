@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1000
+  damageInfo: {fileID: 11400000, guid: 7b9cfdadb38ce0949983e455cef374de, type: 2}
 --- !u!54 &633803955121882103
 Rigidbody:
   m_ObjectHideFlags: 0
