@@ -13,11 +13,11 @@ public class TestStats : MonoBehaviour, IDamageable
     [SerializeField] TextMeshProUGUI hpTest;
     Rigidbody rb;
 
-    public void ReceiveForce(float force)
+    public void ReceiveForce(float force, Vector3 forceDirection)
     {
         rb.Sleep();
         rb.WakeUp();
-        rb.AddForce(-transform.forward * force, ForceMode.Impulse);
+        rb.AddForce(forceDirection * force, ForceMode.Impulse);
         Debug.Log("Pushed");
     }
 
@@ -43,7 +43,7 @@ public class TestStats : MonoBehaviour, IDamageable
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            testDamage.Hit(this);
+            testDamage.Hit(this, -transform.forward);
         }
         hpTest.text = HP.ToString() + " / " + MaxHP.ToString();
 

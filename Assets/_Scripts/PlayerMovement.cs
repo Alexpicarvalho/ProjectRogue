@@ -20,11 +20,12 @@ public class PlayerMovement : MonoBehaviour
 
         
 
-        Vector3 moveDirection = new Vector3(moveX, 0f, moveZ);
+        Vector3 moveDirection = new Vector3(moveX, 0f, moveZ).normalized;
         if (moveDirection != Vector3.zero)
         {
             transform.rotation = Quaternion.LookRotation(moveDirection);
-            rb.velocity = transform.forward *  moveSpeed;
+            transform.position += moveDirection * moveSpeed * Time.deltaTime;
+            //rb.velocity = transform.forward *  moveSpeed;
             animator.SetBool("Moving", true);
         }
         else
@@ -38,6 +39,9 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.Play("Attack");
         }
-        Debug.Log(rb.velocity);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(12 * Vector3.up, ForceMode.Impulse);
+        }
     }
 }

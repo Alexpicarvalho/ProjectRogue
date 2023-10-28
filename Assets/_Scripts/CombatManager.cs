@@ -18,19 +18,19 @@ public class CombatManager : MonoBehaviour
         else instance = this;
     }
 
-    public void DealDamage(IDamageable target, Damage damage)
+    public void DealDamage(IDamageable target, Damage damage, Vector3 forceDirection)
     {
-        StartCoroutine(DealDamageEnum(target, damage));
+        StartCoroutine(DealDamageEnum(target, damage, forceDirection));
     }
 
 
-    public IEnumerator DealDamageEnum(IDamageable target, Damage damage)
+    public IEnumerator DealDamageEnum(IDamageable target, Damage damage, Vector3 forceDirection)
     {
         float damagePerTick = damage._amount / damage._tickAmount;
         float delayBetweenTicks = damage._damageOverTimeDuration / damage._tickAmount;
 
         target.TakeDamage(damagePerTick);
-        target.ReceiveForce(damage._addForce);
+        target.ReceiveForce(damage._addForce, forceDirection);
 
         //Over-Time Damage
         

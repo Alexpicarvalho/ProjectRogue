@@ -8,7 +8,7 @@ public class Interfaces_and_AbstractClasses
 public interface IDamageable
 {
     void TakeDamage(float damage);
-    void ReceiveForce(float force);
+    void ReceiveForce(float force, Vector3 forceDirection);
     Transform ReturnTransform();
 }
 public enum DamageElement
@@ -44,8 +44,8 @@ public class Damage : MonoBehaviour
         _element = element;
     }
 
-    public void Hit(IDamageable target)
+    public void Hit(IDamageable target, Vector3 forceDirection)
     {
-        CombatManager.instance.DealDamage(target,this);
+        CombatManager.instance.DealDamage(target,this,forceDirection);
     }
 }
